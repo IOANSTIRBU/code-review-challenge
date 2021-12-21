@@ -1,6 +1,8 @@
 package com.idealista.application;
 
 import com.idealista.domain.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Arrays;
 import java.util.Collections;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -22,12 +25,25 @@ class AdsServiceImplTest {
     @InjectMocks
     private AdsServiceImpl scoreService;
 
+    @BeforeEach
+    void empezarTestMock(){
+        System.out.println("Ejecutando con Mockito");
+    }
+
+    @AfterEach
+    void finalizandoTestMock(){
+        System.out.println("Finalizando test con Mockito");
+    }
+
     @Test
     public void calculateScoresTest() {
         when(adRepository.findAllAds()).thenReturn(Arrays.asList(irrelevantAd(), relevantAd()));
         scoreService.calculateScores();
         verify(adRepository).findAllAds();
         verify(adRepository, times(2)).save(any());
+        //He aniadido un assert de JUnit para comprobar que funcionan los metodos del repository
+        assertNotNull(adRepository);
+
     }
 
     private Ad relevantAd() {

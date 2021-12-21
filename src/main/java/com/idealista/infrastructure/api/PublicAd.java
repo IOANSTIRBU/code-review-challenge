@@ -11,6 +11,19 @@ public class PublicAd {
     private Integer houseSize;
     private Integer gardenSize;
 
+    //Aniadido constructor vacio
+    public PublicAd() {
+    }
+    //Aniadido constructor con parametros
+    public PublicAd(Integer id, String typology, String description, List<String> pictureUrls, Integer houseSize, Integer gardenSize) {
+        this.id = id;
+        this.typology = typology;
+        this.description = description;
+        this.pictureUrls = pictureUrls;
+        this.houseSize = houseSize;
+        this.gardenSize = gardenSize;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -58,4 +71,18 @@ public class PublicAd {
     public void setGardenSize(Integer gardenSize) {
         this.gardenSize = gardenSize;
     }
+
+    //Aniadido el metodo toString
+    @Override
+    public String toString() {
+        return "PublicAd{" +
+                "id=" + id +
+                ", typology='" + typology + '\'' +
+                ", description='" + description + '\'' +
+                ", pictureUrls=" + pictureUrls +
+                ", houseSize=" + houseSize +
+                ", gardenSize=" + gardenSize +
+                '}';
+    }
+
 }

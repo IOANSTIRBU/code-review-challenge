@@ -14,6 +14,26 @@ public class QualityAd {
     private Integer score;
     private Date irrelevantSince;
 
+    /**
+     * Aniadido el Constructor vacio
+     */
+    public QualityAd(){}
+
+
+    /**
+     * Aniadido el Constructor con todos los parametros
+     */
+    public QualityAd(Integer id, String typology, String description, List<String> pictureUrls, Integer houseSize, Integer gardenSize, Integer score, Date irrelevantSince) {
+        this.id = id;
+        this.typology = typology;
+        this.description = description;
+        this.pictureUrls = pictureUrls;
+        this.houseSize = houseSize;
+        this.gardenSize = gardenSize;
+        this.score = score;
+        this.irrelevantSince = irrelevantSince;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -76,5 +96,20 @@ public class QualityAd {
 
     public void setIrrelevantSince(Date irrelevantSince) {
         this.irrelevantSince = irrelevantSince;
+    }
+
+    //Aniadido el metodo toString()
+    @Override
+    public String toString() {
+        return "QualityAd{" +
+                "id=" + id +
+                ", typology='" + typology + '\'' +
+                ", description='" + description + '\'' +
+                ", pictureUrls=" + pictureUrls +
+                ", houseSize=" + houseSize +
+                ", gardenSize=" + gardenSize +
+                ", score=" + score +
+                ", irrelevantSince=" + irrelevantSince +
+                '}';
     }
 }

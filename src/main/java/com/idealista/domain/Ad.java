@@ -3,7 +3,9 @@ package com.idealista.domain;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-
+/**
+ * Clase que indica las propiedades del anuncio
+ */
 public class Ad {
 
     private Integer id;
@@ -14,6 +16,9 @@ public class Ad {
     private Integer gardenSize;
     private Integer score;
     private Date irrelevantSince;
+
+    //Aniadimos el constructor vacio
+    public Ad(){}
 
     public Ad(Integer id,
               Typology typology,

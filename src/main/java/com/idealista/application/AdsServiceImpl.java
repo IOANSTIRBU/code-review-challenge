@@ -15,6 +15,11 @@ public class AdsServiceImpl implements AdsService {
     @Autowired
     private AdRepository adRepository;
 
+    //Aniadido el Constructor con el parametro del Repositorio AdRepository
+    public AdsServiceImpl(AdRepository adRepository) {
+        this.adRepository = adRepository;
+    }
+
     @Override
     public List<PublicAd> findPublicAds() {
         List<Ad> ads = adRepository.findRelevantAds();
@@ -101,6 +106,7 @@ public class AdsServiceImpl implements AdsService {
                 }
             }
 
+            //Si el chalet tiene mas de 50 palabras se le añade 20 puntos
             if (Typology.CHALET.equals(ad.getTypology())) {
                 if (wds.size() >= Constants.FIFTY) {
                     score += Constants.TWENTY;

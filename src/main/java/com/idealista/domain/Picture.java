@@ -2,16 +2,32 @@ package com.idealista.domain;
 
 import java.util.Objects;
 
+/**
+ * Clase para la Entidad de Picture con sus atributos siguientes:
+ */
 public class Picture {
     private Integer id;
     private String url;
     private Quality quality;
 
+    /**
+     Aniadimos el constructor vacío que es necesario por si no queremos crear un objeto con sus parametros
+     */
+    public Picture(){}
+
+    /**
+     * Constructor con parametros que indicará si tiene:
+     * @param id identificador de la imagen
+     * @param url A donde se dirigirá esta imagen
+     * @param quality Calidad de la imagen
+     */
     public Picture(Integer id, String url, Quality quality) {
         this.id = id;
         this.url = url;
         this.quality = quality;
     }
+
+
 
     public Integer getId() {
         return id;

@@ -37,4 +37,15 @@ public class PictureVO {
     public void setQuality(String quality) {
         this.quality = quality;
     }
+
+    //Aniadido metodo de toString()
+    @Override
+    public String toString() {
+        return "PictureVO{" +
+                "id=" + id +
+                ", url='" + url + '\'' +
+                ", quality='" + quality + '\'' +
+                '}';
+    }
+
 }

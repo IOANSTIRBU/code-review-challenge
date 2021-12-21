@@ -14,6 +14,7 @@ public class AdVO {
     private Integer score;
     private Date irrelevantSince;
 
+    //Aniadimos el constructor vacio por sino queremos crear un objeto con sus parametros
     public AdVO() {}
 
     public AdVO(Integer id, String typology, String description, List<Integer> pictures, Integer houseSize, Integer gardenSize, Integer score, Date irrelevantSince) {
@@ -90,4 +91,20 @@ public class AdVO {
     public void setIrrelevantSince(Date irrelevantSince) {
         this.irrelevantSince = irrelevantSince;
     }
+
+    //Aniadido el metodo toString
+    @Override
+    public String toString() {
+        return "AdVO{" +
+                "id=" + id +
+                ", typology='" + typology + '\'' +
+                ", description='" + description + '\'' +
+                ", pictures=" + pictures +
+                ", houseSize=" + houseSize +
+                ", gardenSize=" + gardenSize +
+                ", score=" + score +
+                ", irrelevantSince=" + irrelevantSince +
+                '}';
+    }
+
 }
