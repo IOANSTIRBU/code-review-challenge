@@ -1,5 +1,10 @@
 package com.idealista.domain;
 
+/**
+ * Clase que muestra todas las constantes que se
+ * van a usar en el codigo
+ */
+
 public class Constants {
     public static final int ZERO = 0;
     public static final int FIVE = 5;

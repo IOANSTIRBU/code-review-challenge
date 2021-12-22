@@ -16,7 +16,7 @@ public interface AdRepository {
     List<Ad> findAllAds();
 
     /**
-     * Metodo que no devuelve nada y solo guarda un objeto Ad
+     * Metodo que no devuelve nada y con el metodo save() guarda un anuncio
      * @param ad
      */
     void save(Ad ad);

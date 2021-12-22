@@ -3,6 +3,11 @@ package com.idealista.infrastructure.api;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Clase que se encarga de que el anuncio tenga calidad
+ * y tiene los siguientes atributos
+ */
+
 public class QualityAd {
 
     private Integer id;

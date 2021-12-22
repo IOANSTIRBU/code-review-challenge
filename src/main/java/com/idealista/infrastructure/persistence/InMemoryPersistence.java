@@ -15,9 +15,10 @@ public class InMemoryPersistence implements AdRepository {
     private List<AdVO> ads;
     private List<PictureVO> pictures;
 
+
     public InMemoryPersistence() {
         //He aniadido en vez de Array.asList() puse Collections.singletonList()
-        ads = new ArrayList<AdVO>();
+        ads = new ArrayList<>();
         ads.add(new AdVO(1, "CHALET", "Este piso es una ganga, compra, compra, COMPRA!!!!!", Collections.<Integer>emptyList(), 300, null, null, null));
         ads.add(new AdVO(2, "FLAT", "Nuevo ático céntrico recién reformado. No deje pasar la oportunidad y adquiera este ático de lujo", Collections.singletonList(4), 300, null, null, null));
         ads.add(new AdVO(3, "CHALET", "", Collections.singletonList(2), 300, null, null, null));
@@ -27,7 +28,8 @@ public class InMemoryPersistence implements AdRepository {
         ads.add(new AdVO(7, "GARAGE", "Garaje en el centro de Albacete", Collections.<Integer>emptyList(), 300, null, null, null));
         ads.add(new AdVO(8, "CHALET", "Maravilloso chalet situado en lAs afueras de un pequeño pueblo rural. El entorno es espectacular, las vistas magníficas. ¡Cómprelo ahora!", Arrays.asList(1, 7), 300, null, null, null));
 
-        pictures = new ArrayList<PictureVO>();
+        //Aqui he remplazado el ArrayList por uno vacio
+        pictures = new ArrayList<>();
         pictures.add(new PictureVO(1, "http://www.idealista.com/pictures/1", "SD"));
         pictures.add(new PictureVO(2, "http://www.idealista.com/pictures/2", "HD"));
         pictures.add(new PictureVO(3, "http://www.idealista.com/pictures/3", "SD"));

@@ -3,6 +3,9 @@ package com.idealista.infrastructure.persistence;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Clase que indica las especificaciones de la vivienda en el anuncio
+ */
 public class AdVO {
 
     private Integer id;

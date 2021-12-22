@@ -1,11 +1,15 @@
 package com.idealista.infrastructure.persistence;
 
+/**
+ * Clase que indica las especificaciones de la imagen en el anuncio
+ */
 public class PictureVO {
 
     private Integer id;
     private String url;
     private String quality;
 
+    //Se aniade un constructor vacio por sino queremos crear un objeto con atributos
     public PictureVO() {}
 
     public PictureVO(Integer id, String url, String quality) {

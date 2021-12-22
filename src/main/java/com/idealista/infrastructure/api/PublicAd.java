@@ -2,6 +2,11 @@ package com.idealista.infrastructure.api;
 
 import java.util.List;
 
+/**
+ * Clase que se encarga de que el anuncio este publico
+ * sus atributos son los siguientes
+ */
+
 public class PublicAd {
 
     private Integer id;

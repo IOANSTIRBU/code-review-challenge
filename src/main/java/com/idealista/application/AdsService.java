@@ -2,6 +2,7 @@ package com.idealista.application;
 
 import com.idealista.infrastructure.api.PublicAd;
 import com.idealista.infrastructure.api.QualityAd;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 /**
@@ -27,4 +28,6 @@ public interface AdsService {
      * calcula los puntos de cada anuncio
      */
     void calculateScores();
+
+
 }

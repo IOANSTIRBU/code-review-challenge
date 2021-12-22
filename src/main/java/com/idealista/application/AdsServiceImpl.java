@@ -4,6 +4,7 @@ import com.idealista.domain.*;
 import com.idealista.infrastructure.api.PublicAd;
 import com.idealista.infrastructure.api.QualityAd;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -69,6 +70,8 @@ public class AdsServiceImpl implements AdsService {
                 .forEach(this::calculateScore);
     }
 
+
+
     private void calculateScore(Ad ad) {
         int score = Constants.ZERO;
 
@@ -79,8 +82,10 @@ public class AdsServiceImpl implements AdsService {
             for (Picture picture: ad.getPictures()) {
                 if(Quality.HD.equals(picture.getQuality())) {
                     score += Constants.TWENTY; //Cada foto en alta definición aporta 20 puntos
-                } else {
+                } else if(Quality.SD.equals(picture.getQuality())){
                     score += Constants.TEN; //Cada foto normal aporta 10 puntos
+                }else{
+                    System.out.println("No se ha podido realizar ninguna accion");
                 }
             }
         }
@@ -91,36 +96,41 @@ public class AdsServiceImpl implements AdsService {
         if (optDesc.isPresent()) {
             String description = optDesc.get();
 
+            //Si la descripcion no esta vacia se le sumaran 5 puntos
             if (!description.isEmpty()) {
                 score += Constants.FIVE;
             }
 
+            //Esto lo que hara es contar el numero de palabras
             List<String> wds = Arrays.asList(description.split(" ")); //número de palabras
+
             if (Typology.FLAT.equals(ad.getTypology())) {
                 if (wds.size() >= Constants.TWENTY && wds.size() <= Constants.FORTY_NINE) {
-                   score += Constants.TEN;
+                    score += Constants.TEN;
                 }
-
-                if (wds.size() >= Constants.FIFTY) {
+                //Si la descripcion tiene 50 o mas palabras se le pondra 30 puntos
+                if (wds.size() >= Constants.FIFTY)
                     score += Constants.THIRTY;
-                }
+            }
+                //Si el chalet tiene mas de 50 palabras se le aniadira 20 puntos
+            if(Typology.CHALET.equals(ad.getTypology())){
+                    if (wds.size() >= Constants.FIFTY)
+                        score += Constants.TWENTY;
             }
 
-            //Si el chalet tiene mas de 50 palabras se le añade 20 puntos
-            if (Typology.CHALET.equals(ad.getTypology())) {
-                if (wds.size() >= Constants.FIFTY) {
-                    score += Constants.TWENTY;
-                }
-            }
 
-            if (wds.contains("luminoso")) score += Constants.FIVE;
-            if (wds.contains("nuevo")) score += Constants.FIVE;
-            if (wds.contains("céntrico")) score += Constants.FIVE;
-            if (wds.contains("reformado")) score += Constants.FIVE;
-            if (wds.contains("ático")) score += Constants.FIVE;
+
+
+
+            //Cada vez que aparezcan estas palabras se le aniadira 5 puntos
+            if (wds.contains("Luminoso")) score += Constants.FIVE;
+            if (wds.contains("Nuevo")) score += Constants.FIVE;
+            if (wds.contains("Céntrico")) score += Constants.FIVE;
+            if (wds.contains("Reformado")) score += Constants.FIVE;
+            if (wds.contains("Ático")) score += Constants.FIVE;
         }
 
-        //Calcular puntuación por completitud
+        //Calcular puntuación que esta completo
         if (ad.isComplete()) {
             score = Constants.FORTY;
         }
@@ -135,12 +145,14 @@ public class AdsServiceImpl implements AdsService {
             ad.setScore(Constants.ONE_HUNDRED);
         }
 
+        //Si el anuncio es irrelevante se le aniadiran 40 puntos
         if (ad.getScore() < Constants.FORTY) {
             ad.setIrrelevantSince(new Date());
         } else {
             ad.setIrrelevantSince(null);
         }
 
+        //En el repositorio de anuncios guardamos todos los datos de los anuncios
         adRepository.save(ad);
     }
 

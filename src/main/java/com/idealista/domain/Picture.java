@@ -74,4 +74,6 @@ public class Picture {
     public int hashCode() {
         return Objects.hash(id, url, quality);
     }
+
+
 }
